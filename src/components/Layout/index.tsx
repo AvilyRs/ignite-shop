@@ -5,6 +5,7 @@ import { LayoutProps } from './interface';
 const RobotoFont = Roboto_Flex({
   subsets: ['latin'],
   weight: ['400', '700'],
+  variable: '--roboto',
 });
 
 const fontClasses = RobotoFont.className;
