@@ -1,6 +1,6 @@
 import { Roboto_Flex } from 'next/font/google';
 
-import { Navbar } from '../Navbar';
+import { Navbar } from 'src/components/Navbar';
 
 import { LayoutProps } from './interface';
 import { Container } from './styles';
