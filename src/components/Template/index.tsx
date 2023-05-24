@@ -1,6 +1,9 @@
 import { Roboto_Flex } from 'next/font/google';
 
+import { Navbar } from '../Navbar';
+
 import { LayoutProps } from './interface';
+import { Container } from './styles';
 
 const RobotoFont = Roboto_Flex({
   subsets: ['latin'],
@@ -11,5 +14,10 @@ const RobotoFont = Roboto_Flex({
 const fontClasses = RobotoFont.className;
 
 export default function Layout({ children }: LayoutProps) {
-  return <div className={fontClasses}>{children}</div>;
+  return (
+    <Container className={fontClasses}>
+      <Navbar />
+      {children}
+    </Container>
+  );
 }
