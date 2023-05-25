@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Stripe from 'stripe';
+import { GetStaticProps } from 'next';
 
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -8,7 +9,7 @@ import 'keen-slider/keen-slider.min.css';
 import { HomeContainer } from 'src/styles/pages/home';
 import { Product } from 'src/styles/pages/home';
 import { stripe } from 'src/lib/stripe';
-import { HomeProps } from './interface';
+import { HomeProps } from '../interfaces/home.interface';
 
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
@@ -17,8 +18,6 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   });
-
-  console.log(products);
 
   return (
     <>
@@ -43,7 +42,7 @@ export default function Home({ products }: HomeProps) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   });
@@ -64,5 +63,6 @@ export const getServerSideProps = async () => {
     props: {
       products,
     },
+    revalidate: 60 * 60 * 2, // 2 hours
   };
 };
