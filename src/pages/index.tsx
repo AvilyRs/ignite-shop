@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Stripe from 'stripe';
 import { GetStaticProps } from 'next';
+import { currency } from 'src/utils/formatters';
 
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -49,13 +50,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const products = response.data.map((product) => {
     const productPrice = product.default_price as Stripe.Price;
+    const price = productPrice.unit_amount / 100;
 
     return {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
       // 100 to convert, because it is in centavos
-      price: productPrice.unit_amount / 100,
+      price: currency.format(price),
     };
   });
 
