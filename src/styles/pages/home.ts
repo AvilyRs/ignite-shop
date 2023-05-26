@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { styled } from '..';
 
 export const HomeContainer = styled('main', {
@@ -8,7 +10,7 @@ export const HomeContainer = styled('main', {
   marginLeft: 'auto',
 });
 
-export const Product = styled('a', {
+export const Product = styled(Link, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
