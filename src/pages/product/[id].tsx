@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Stripe from 'stripe';
@@ -5,14 +6,14 @@ import axios from 'axios';
 
 import { stripe } from 'src/lib/stripe';
 
+import { currency } from 'src/utils/formatters';
+import { ProductProps } from 'src/interfaces/product.interface';
+
 import {
   ImageContainer,
   ProductContainer,
   ProductDetails,
-} from 'src/styles/pages/styles';
-import { currency } from 'src/utils/formatters';
-import { ProductProps } from 'src/interfaces/product.interface';
-import { useState } from 'react';
+} from 'src/styles/pages/product';
 
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter();
