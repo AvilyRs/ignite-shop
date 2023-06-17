@@ -6,6 +6,8 @@ import axios from 'axios';
 
 import { stripe } from 'src/lib/stripe';
 
+import { Head } from 'src/components/Head';
+
 import { currency } from 'src/utils/formatters';
 import { ProductProps } from 'src/interfaces/product.interface';
 
@@ -42,6 +44,7 @@ export default function Product({ product }: ProductProps) {
 
   return (
     <ProductContainer>
+      <Head title={product.name} />
       <ImageContainer>
         <img src={product.imageUrl} alt="" />
       </ImageContainer>

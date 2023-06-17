@@ -1,15 +1,19 @@
 import Stripe from 'stripe';
 import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { stripe } from 'src/lib/stripe';
+
+import { Head } from 'src/components/Head';
+
 import { SuccessProps } from 'src/interfaces/success.interface';
 import { SuccessContainer, ImageContainer } from 'src/styles/pages/success';
-import Image from 'next/image';
 
 export default function Success({ customerName, product }: SuccessProps) {
   return (
     <SuccessContainer>
+      <Head title="Sucesso" />
       <h1>Compra efetuada</h1>
 
       <ImageContainer>

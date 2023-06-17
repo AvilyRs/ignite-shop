@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import Stripe from 'stripe';
 import { GetStaticProps } from 'next';
@@ -11,6 +10,7 @@ import { HomeContainer } from 'src/styles/pages/home';
 import { Product } from 'src/styles/pages/home';
 import { stripe } from 'src/lib/stripe';
 import { HomeProps } from '../interfaces/home.interface';
+import { Head } from 'src/components/Head';
 
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
@@ -22,11 +22,7 @@ export default function Home({ products }: HomeProps) {
 
   return (
     <>
-      <Head>
-        <title>Ignite Shop</title>
-        <meta name="description" content="An ignite shop application" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <Head />
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products.map((product) => (
           <Product
