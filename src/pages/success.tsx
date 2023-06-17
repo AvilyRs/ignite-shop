@@ -13,7 +13,7 @@ import { SuccessContainer, ImageContainer } from 'src/styles/pages/success';
 export default function Success({ customerName, product }: SuccessProps) {
   return (
     <SuccessContainer>
-      <Head title="Sucesso" />
+      <Head title="Sucesso" noIndex={true} />
       <h1>Compra efetuada</h1>
 
       <ImageContainer>
